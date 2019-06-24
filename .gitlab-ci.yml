@@ -1,0 +1,391 @@
+# see https://docs.gitlab.com/ce/ci/yaml/README.html for all available options
+
+.project_activation: &project_activation
+  # Will ensure that the CI pipeline will 'only' run when initiated via the   
+  # the web GUI (CI / CD -> Pipelines -> Run Pipeline).   
+    only:     
+      - web
+
+before_script:   
+  - export TERM=xterm
+
+stages:
+  - build_amg
+  - build_amg2013
+  - build_aspa
+  - build_branson
+  - build_chatterbug
+  - build_clamr
+  - build_cloverleaf
+  - build_cloverleaf3d
+  - build_coevp
+  - build_cohmm
+  - build_comd
+  - build_cosp2
+  - build_ebms
+  - build_ember
+  - build_examinimd
+  - build_exampm
+  - build_exasp2
+  - build_hacckernels
+  - build_hpccg
+  - build_hpgmg
+  - build_kripke
+  - build_laghos
+  - build_lcals
+  - build_lulesh
+  - build_macsio
+  - build_miniaero
+  - build_miniamr
+  - build_minife
+  - build_minighost
+  - build_minimd
+  - build_miniqmc
+  - build_minismac2d
+  - build_minitri
+  - build_minivite
+  - build_minixyce
+  - build_nekbone
+  - build_nut
+  - build_pathfinder
+  - build_pennant
+  - build_picsarlite
+  - build_rsbench
+  - build_simplemoc
+  - build_snap
+  - build_snbone
+  - build_sw4lite
+  - build_swfft
+  - build_tealeaf
+  - build_thornado-mini
+  - build_xsbench
+
+  #- test
+
+.project_activation: &project_activation
+  # Will ensure that the CI pipeline will 'only' run when initiated via the
+  # the web GUI (CI / CD -> Pipelines -> Run Pipeline).
+  only:
+    - web
+
+.Build:
+  variables:     
+    SCHEDULER_PARAMETERS: "--nodes=1 --nodelist=p902 --partition=ecp-p9-4v100"
+  tags:
+    - xx-testing
+    - dosequis
+    - slurm
+    - nmc
+#  tags:
+#    - nmcc
+#    - p9
+#    - mirage
+  <<: *project_activation
+
+  # stage: build
+  script:
+    - uname -a
+#   This is for p902
+    - source /ecp/scratch/jgalarowicz/spack/share/spack/setup-env.sh
+#   This is for mirage
+#    - source /ecp/jgalarowicz/spack/share/spack/setup-env.sh
+    - if spack info ${APP} | grep -q mantevo.org/downloads; then INSECURE="--insecure"; fi
+    - spack compiler find 
+    - spack install --only dependencies ${APP} %gcc@8.2.0
+    - spack ${INSECURE} install -v --only package ${APP} %gcc@8.2.0
+  # Allow a job to fail without stopping the rest of the jobs
+  allow_failure: true
+
+Build amg:
+  stage: build_amg
+  variables:
+    APP: "amg"
+  extends: .Build
+
+Build amg2013:
+  stage: build_amg2013
+  variables:
+    APP: "amg2013"
+  extends: .Build
+
+Build aspa:
+  stage: build_aspa
+  variables:
+    APP: "aspa"
+  extends: .Build
+
+Build branson:
+  stage: build_branson
+  variables:
+    APP: "branson"
+  extends: .Build
+
+Build chatterbug:
+  stage: build_chatterbug
+  variables:
+    APP: "chatterbug"
+  extends: .Build
+
+Build clamr:
+  stage: build_clamr
+  variables:
+    APP: "clamr"
+  extends: .Build
+
+Build cloverleaf:
+  stage: build_cloverleaf
+  variables:
+    APP: "cloverleaf"
+  extends: .Build
+
+Build cloverleaf3d:
+  stage: build_cloverleaf3d
+  variables:
+    APP: "cloverleaf3d"
+  extends: .Build
+
+Build coevp:
+  stage: build_coevp
+  variables:
+    APP: "coevp"
+  extends: .Build
+
+Build cohmm:
+  stage: build_cohmm
+  variables:
+    APP: "cohmm"
+  extends: .Build
+
+Build comd:
+  stage: build_comd
+  variables:
+    APP: "comd"
+  extends: .Build
+
+Build cosp2:
+  stage: build_cosp2
+  variables:
+    APP: "cosp2"
+  extends: .Build
+
+Build ebms:
+  stage: build_ebms
+  variables:
+    APP: "ebms"
+  extends: .Build
+
+Build ember:
+  stage: build_ember
+  variables:
+    APP: "ember"
+  extends: .Build
+
+Build examinimd:
+  stage: build_examinimd
+  variables:
+    APP: "examinimd"
+  extends: .Build
+
+Build exampm:
+  stage: build_exampm
+  variables:
+    APP: "exampm"
+  extends: .Build
+
+Build exasp2:
+  stage: build_exasp2
+  variables:
+    APP: "exasp2"
+  extends: .Build
+
+Build hacckernels:
+  stage: build_hacckernels
+  variables:
+    APP: "hacckernels"
+  extends: .Build
+
+Build hpccg:
+  stage: build_hpccg
+  variables:
+    APP: "hpccg"
+  extends: .Build
+
+Build hpgmg:
+  stage: build_hpgmg
+  variables:
+    APP: "hpgmg"
+  extends: .Build
+
+Build kripke:
+  stage: build_kripke
+  variables:
+    APP: "kripke"
+  extends: .Build
+
+Build laghos:
+  stage: build_laghos
+  variables:
+    APP: "laghos"
+  extends: .Build
+
+Build lcals:
+  stage: build_lcals
+  variables:
+    APP: "lcals"
+  extends: .Build
+
+Build lulesh:
+  stage: build_lulesh
+  variables:
+    APP: "lulesh"
+  extends: .Build
+
+Build macsio:
+  stage: build_macsio
+  variables:
+    APP: "macsio"
+  extends: .Build
+
+Build miniaero:
+  stage: build_miniaero
+  variables:
+    APP: "miniaero"
+  extends: .Build
+
+Build miniamr:
+  stage: build_miniamr
+  variables:
+    APP: "miniamr"
+  extends: .Build
+
+Build minife:
+  stage: build_minife
+  variables:
+    APP: "minife"
+  extends: .Build
+
+Build minighost:
+  stage: build_minighost
+  variables:
+    APP: "minighost"
+  extends: .Build
+
+Build minimd:
+  stage: build_minimd
+  variables:
+    APP: "minimd"
+  extends: .Build
+
+Build miniqmc:
+  stage: build_miniqmc
+  variables:
+    APP: "miniqmc"
+  extends: .Build
+
+Build minismac2d:
+  stage: build_minismac2d
+  variables:
+    APP: "minismac2d"
+  extends: .Build
+
+Build minitri:
+  stage: build_minitri
+  variables:
+    APP: "minitri"
+  extends: .Build
+
+Build minivite:
+  stage: build_minivite
+  variables:
+    APP: "minivite"
+  extends: .Build
+
+Build minixyce:
+  stage: build_minixyce
+  variables:
+    APP: "minixyce"
+  extends: .Build
+
+Build nekbone:
+  stage: build_nekbone
+  variables:
+    APP: "nekbone"
+  extends: .Build
+
+Build nut:
+  stage: build_nut
+  variables:
+    APP: "nut"
+  extends: .Build
+
+Build pathfinder:
+  stage: build_pathfinder
+  variables:
+    APP: "pathfinder"
+  extends: .Build
+
+Build pennant:
+  stage: build_pennant
+  variables:
+    APP: "pennant"
+  extends: .Build
+
+Build picsarlite:
+  stage: build_picsarlite
+  variables:
+    APP: "picsarlite"
+  extends: .Build
+
+Build rsbench:
+  stage: build_rsbench
+  variables:
+    APP: "rsbench"
+  extends: .Build
+
+Build simplemoc:
+  stage: build_simplemoc
+  variables:
+    APP: "simplemoc"
+  extends: .Build
+
+Build snap:
+  stage: build_snap
+  variables:
+    APP: "snap"
+  extends: .Build
+
+Build snbone:
+  stage: build_snbone
+  variables:
+    APP: "snbone"
+  extends: .Build
+
+Build sw4lite:
+  stage: build_sw4lite
+  variables:
+    APP: "sw4lite"
+  extends: .Build
+
+Build swfft:
+  stage: build_swfft
+  variables:
+    APP: "swfft"
+  extends: .Build
+
+Build tealeaf:
+  stage: build_tealeaf
+  variables:
+    APP: "tealeaf"
+  extends: .Build
+
+Build thornado-mini:
+  stage: build_thornado-mini
+  variables:
+    APP: "thornado-mini"
+  extends: .Build
+
+Build xsbench:
+  stage: build_xsbench
+  variables:
+    APP: "xsbench"
+  extends: .Build
