@@ -1,10 +1,10 @@
 # see https://docs.gitlab.com/ce/ci/yaml/README.html for all available options
 
-.project_activation: &project_activation
-  # Will ensure that the CI pipeline will 'only' run when initiated via the   
-  # the web GUI (CI / CD -> Pipelines -> Run Pipeline).   
-    only:     
-      - web
+#.project_activation: &project_activation
+#  # Will ensure that the CI pipeline will 'only' run when initiated via the   
+#  # the web GUI (CI / CD -> Pipelines -> Run Pipeline).   
+#    only:     
+#      - web
 
 before_script:   
   - export TERM=xterm
@@ -62,25 +62,27 @@ stages:
 
   #- test
 
-.project_activation: &project_activation
-  # Will ensure that the CI pipeline will 'only' run when initiated via the
-  # the web GUI (CI / CD -> Pipelines -> Run Pipeline).
-  only:
-    - web
+#.project_activation: &project_activation
+#  # Will ensure that the CI pipeline will 'only' run when initiated via the
+#  # the web GUI (CI / CD -> Pipelines -> Run Pipeline).
+#  only:
+#    - web
 
 .Build:
   variables:     
     SCHEDULER_PARAMETERS: "--nodes=1 --nodelist=p902 --partition=ecp-p9-4v100"
   tags:
-    - xx-testing
-    - dosequis
+    - nmc-xxfe1-sched-001
+    - centos7
+    - xx-fe1
     - slurm
+    - p9
     - nmc
 #  tags:
 #    - nmcc
 #    - p9
 #    - mirage
-  <<: *project_activation
+#  <<: *project_activation
 
   # stage: build
   script:
