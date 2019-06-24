@@ -413,7 +413,7 @@ Build xsbench:
   extends: .Build
 
 Test miniqmc:
-  stage test_miniqmc
+  stage: test_miniqmc
   extends: .Test
   script:
     - source $HOME/spack/share/spack/setup-env.sh
