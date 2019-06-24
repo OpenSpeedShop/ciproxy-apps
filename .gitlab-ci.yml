@@ -61,6 +61,7 @@ stages:
   - build_xsbench
 
   #- test
+  - test_miniqmc
 
 #.project_activation: &project_activation
 #  # Will ensure that the CI pipeline will 'only' run when initiated via the
@@ -95,6 +96,25 @@ stages:
     - spack compiler find 
     - spack install --only dependencies ${APP} %gcc@8.2.0
     - spack ${INSECURE} install -v --only package ${APP} %gcc@8.2.0
+  # Allow a job to fail without stopping the rest of the jobs
+  allow_failure: true
+
+.Test:
+  variables:     
+    SCHEDULER_PARAMETERS: "--nodes=1 --nodelist=p902 --partition=ecp-p9-4v100"
+  tags:
+    - nmc-xxfe1-sched-001
+    - centos7
+    - xx-fe1
+    - slurm
+    - p9
+    - nmc
+
+  # stage: for testing
+  script:
+    - uname -a
+    - source /ecp/scratch/jgalarowicz/spack/share/spack/setup-env.sh
+
   # Allow a job to fail without stopping the rest of the jobs
   allow_failure: true
 
@@ -391,3 +411,12 @@ Build xsbench:
   variables:
     APP: "xsbench"
   extends: .Build
+
+Test miniqmc:
+  stage test_miniqmc
+  extends: .Test
+  script:
+    - source $HOME/spack/share/spack/setup-env.sh
+    - spack load miniqmc
+    - spack load openmpi
+    - mpirun -np 2 `which miniqmc` < ./input_args
