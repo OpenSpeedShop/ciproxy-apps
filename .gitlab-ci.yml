@@ -418,5 +418,5 @@ Test miniqmc:
   script:
     - source /ecp/scratch/jgalarowicz/spack/share/spack/setup-env.sh
     - spack load miniqmc
-    - spack load openmpi
+    - spack load openmpi ^gcc@8.2.0
     - mpirun -np 2 `which miniqmc` < ./input_args
