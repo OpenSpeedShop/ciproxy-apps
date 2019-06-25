@@ -208,7 +208,7 @@ stages:
 #    APP: "examinimd"
 #  extends: .Build
 #
-Build exampm:
+#Build exampm:
 #  stage: build_exampm
 #  variables:
 #    APP: "exampm"
