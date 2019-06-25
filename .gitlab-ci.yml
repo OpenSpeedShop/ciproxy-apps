@@ -416,7 +416,7 @@ Test miniqmc:
   stage: test_miniqmc
   extends: .Test
   script:
-    - . $HOME/spack/share/spack/setup-env.sh
+    - source /ecp/scratch/jgalarowicz/spack/share/spack/setup-env.sh
     - spack load miniqmc
     - spack load openmpi
     - mpirun -np 2 `which miniqmc` < ./input_args
