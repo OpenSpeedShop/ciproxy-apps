@@ -118,181 +118,181 @@ stages:
   # Allow a job to fail without stopping the rest of the jobs
   allow_failure: true
 
- Build amg:
+Build amg:
    stage: build_amg
    variables:
      APP: "amg"
    extends: .Build
  
- Build amg2013:
+Build amg2013:
    stage: build_amg2013
    variables:
      APP: "amg2013"
    extends: .Build
  
- Build aspa:
+Build aspa:
    stage: build_aspa
    variables:
      APP: "aspa"
    extends: .Build
  
- Build branson:
+Build branson:
    stage: build_branson
    variables:
      APP: "branson"
    extends: .Build
  
- Build chatterbug:
+Build chatterbug:
    stage: build_chatterbug
    variables:
      APP: "chatterbug"
    extends: .Build
  
- Build clamr:
+Build clamr:
    stage: build_clamr
    variables:
      APP: "clamr"
    extends: .Build
  
- Build cloverleaf:
+Build cloverleaf:
    stage: build_cloverleaf
    variables:
      APP: "cloverleaf"
    extends: .Build
  
- Build cloverleaf3d:
+Build cloverleaf3d:
    stage: build_cloverleaf3d
    variables:
      APP: "cloverleaf3d"
    extends: .Build
  
- Build coevp:
+Build coevp:
    stage: build_coevp
    variables:
      APP: "coevp"
    extends: .Build
  
- Build cohmm:
+Build cohmm:
    stage: build_cohmm
    variables:
      APP: "cohmm"
    extends: .Build
  
- Build comd:
+Build comd:
    stage: build_comd
    variables:
      APP: "comd"
    extends: .Build
  
- Build cosp2:
+Build cosp2:
    stage: build_cosp2
    variables:
      APP: "cosp2"
    extends: .Build
  
- Build ebms:
+Build ebms:
    stage: build_ebms
    variables:
      APP: "ebms"
    extends: .Build
  
- Build ember:
+Build ember:
    stage: build_ember
    variables:
      APP: "ember"
    extends: .Build
  
- Build examinimd:
+Build examinimd:
    stage: build_examinimd
    variables:
      APP: "examinimd"
    extends: .Build
  
- Build exampm:
+Build exampm:
    stage: build_exampm
    variables:
      APP: "exampm"
    extends: .Build
  
- Build exasp2:
+Build exasp2:
    stage: build_exasp2
    variables:
      APP: "exasp2"
    extends: .Build
  
- Build hacckernels:
+Build hacckernels:
    stage: build_hacckernels
    variables:
      APP: "hacckernels"
    extends: .Build
  
- Build hpccg:
+Build hpccg:
    stage: build_hpccg
    variables:
      APP: "hpccg"
    extends: .Build
  
- Build hpgmg:
+Build hpgmg:
    stage: build_hpgmg
    variables:
      APP: "hpgmg"
    extends: .Build
  
- Build kripke:
+Build kripke:
    stage: build_kripke
    variables:
      APP: "kripke"
    extends: .Build
  
- Build laghos:
+Build laghos:
    stage: build_laghos
    variables:
      APP: "laghos"
    extends: .Build
  
- Build lcals:
+Build lcals:
    stage: build_lcals
    variables:
      APP: "lcals"
    extends: .Build
  
- Build lulesh:
+Build lulesh:
    stage: build_lulesh
    variables:
      APP: "lulesh"
    extends: .Build
  
- Build macsio:
+Build macsio:
    stage: build_macsio
    variables:
      APP: "macsio"
    extends: .Build
  
- Build miniaero:
+Build miniaero:
    stage: build_miniaero
    variables:
      APP: "miniaero"
    extends: .Build
  
- Build miniamr:
+Build miniamr:
    stage: build_miniamr
    variables:
      APP: "miniamr"
    extends: .Build
  
- Build minife:
+Build minife:
    stage: build_minife
    variables:
      APP: "minife"
    extends: .Build
  
- Build minighost:
+Build minighost:
    stage: build_minighost
    variables:
      APP: "minighost"
    extends: .Build
  
- Build minimd:
+Build minimd:
    stage: build_minimd
    variables:
      APP: "minimd"
@@ -304,109 +304,109 @@ Build miniqmc:
     APP: "miniqmc"
   extends: .Build
 
- Build minismac2d:
+Build minismac2d:
    stage: build_minismac2d
    variables:
      APP: "minismac2d"
    extends: .Build
  
- Build minitri:
+Build minitri:
    stage: build_minitri
    variables:
      APP: "minitri"
    extends: .Build
  
- Build minivite:
+Build minivite:
    stage: build_minivite
    variables:
      APP: "minivite"
    extends: .Build
  
- Build minixyce:
+Build minixyce:
    stage: build_minixyce
    variables:
      APP: "minixyce"
    extends: .Build
  
- Build nekbone:
+Build nekbone:
    stage: build_nekbone
    variables:
      APP: "nekbone"
    extends: .Build
  
- Build nut:
+Build nut:
    stage: build_nut
    variables:
      APP: "nut"
    extends: .Build
  
- Build pathfinder:
+Build pathfinder:
    stage: build_pathfinder
    variables:
      APP: "pathfinder"
    extends: .Build
  
- Build pennant:
+Build pennant:
    stage: build_pennant
    variables:
      APP: "pennant"
    extends: .Build
  
- Build picsarlite:
+Build picsarlite:
    stage: build_picsarlite
    variables:
      APP: "picsarlite"
    extends: .Build
  
- Build rsbench:
+Build rsbench:
    stage: build_rsbench
    variables:
      APP: "rsbench"
    extends: .Build
  
- Build simplemoc:
+Build simplemoc:
    stage: build_simplemoc
    variables:
      APP: "simplemoc"
    extends: .Build
  
- Build snap:
+Build snap:
    stage: build_snap
    variables:
      APP: "snap"
    extends: .Build
  
- Build snbone:
+Build snbone:
    stage: build_snbone
    variables:
      APP: "snbone"
    extends: .Build
  
- Build sw4lite:
+Build sw4lite:
    stage: build_sw4lite
    variables:
      APP: "sw4lite"
    extends: .Build
  
- Build swfft:
+Build swfft:
    stage: build_swfft
    variables:
      APP: "swfft"
    extends: .Build
  
- Build tealeaf:
+Build tealeaf:
    stage: build_tealeaf
    variables:
      APP: "tealeaf"
    extends: .Build
  
- Build thornado-mini:
+Build thornado-mini:
    stage: build_thornado-mini
    variables:
      APP: "thornado-mini"
    extends: .Build
  
- Build xsbench:
+Build xsbench:
    stage: build_xsbench
    variables:
      APP: "xsbench"
