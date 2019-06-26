@@ -77,8 +77,8 @@ stages:
     - centos7
     - xx-fe1
     - slurm
-    - p9
     - nmc
+#    - p9
 #  tags:
 #    - nmcc
 #    - p9
