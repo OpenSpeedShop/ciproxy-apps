@@ -61,6 +61,7 @@ stages:
 
   #- test
   - test_miniqmc
+  - test_amg2013
 
 #.project_activation: &project_activation
 #  # Will ensure that the CI pipeline will 'only' run when initiated via the
@@ -419,3 +420,13 @@ Test miniqmc:
     - spack load miniqmc
     - spack load openmpi
     - mpirun -np 2 `which miniqmc` < ./input_args
+    
+Test amg2013:
+  stage: test_amg2013
+  extends: .Test
+  script:
+    - source /ecp/scratch/jgalarowicz/spack/share/spack/setup-env.sh
+    - spack load amg2013
+    - spack load openmpi
+    - export OMP_NUM_THREADS=2
+    - mpirun -np 2 ./amg2013 -r 12 12 12 -P 2 1 1
