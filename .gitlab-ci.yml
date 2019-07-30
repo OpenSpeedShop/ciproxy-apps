@@ -63,7 +63,6 @@ stages:
   - test_miniqmc
   - test_amg2013
 
-
 #.project_activation: &project_activation
 #  # Will ensure that the CI pipeline will 'only' run when initiated via the
 #  # the web GUI (CI / CD -> Pipelines -> Run Pipeline).
